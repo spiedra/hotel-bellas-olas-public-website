@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 import Box from '@mui/material/Box'
 import Navbar from './components/Navbar'
 
-const drawerWidth = 300
+const drawerWidth = 240
 
 function App () {
   return (
