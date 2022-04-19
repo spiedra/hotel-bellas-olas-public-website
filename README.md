@@ -9,7 +9,7 @@ Hotel reservation system developed using the SCRUM development framework as a pr
 ## Tech Stack
 
 - React.js
-- Styled Components
+- Material UI
 - ESLint
 - React Router
 
@@ -37,7 +37,7 @@ $ npm install
 3. Run the project
 
 ```bash
-$ npm run dev
+$ npm start
 ```
 
 ## Contributing
