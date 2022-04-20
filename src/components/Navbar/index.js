@@ -17,6 +17,7 @@ import CloseIcon from '@mui/icons-material/Close'
 
 import { navbarItems } from './consts/index'
 import { navbarStyles } from './styles'
+import Advertising from '../Advertising'
 
 const drawerWidth = 240
 
@@ -43,7 +44,8 @@ const Navbar = () => {
       <Divider />
       <List>
         {navbarItems.map((item) => (
-          <ListItem sx={{ pl: '2.5rem' }}
+          <ListItem
+            sx={{ pl: '2.5rem' }}
             button
             key={item.id}
             onClick={() => {
@@ -54,6 +56,7 @@ const Navbar = () => {
           </ListItem>
         ))}
       </List>
+      {<Advertising />}
     </div>
   )
 
