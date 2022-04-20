@@ -30,7 +30,7 @@ const Navbar = () => {
   }
 
   const drawer = (
-    <div>
+    <Box>
       <Toolbar sx={navbarStyles.toolbarClose}>
         <IconButton
           color="inherit"
@@ -57,7 +57,7 @@ const Navbar = () => {
         ))}
       </List>
       {<Advertising />}
-    </div>
+    </Box>
   )
 
   return (
