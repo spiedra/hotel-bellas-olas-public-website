@@ -15,14 +15,14 @@ const Advertising = () => {
   return (
     <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center' }}>
       {advertisingInfo
-        ? <Box
-          component="img"
-          sx={{
-            maxWidth: { xs: 175, md: 180 }
-          }}
-          alt={advertisingInfo.alt}
-          src={`data:image/png;base64,${advertisingInfo.image}`}
-        />
+        ? <a href=''><Box
+        component="img"
+        sx={{
+          maxWidth: { xs: 175, md: 180 }
+        }}
+        alt={advertisingInfo.alt}
+        src={`data:image/png;base64,${advertisingInfo.image}`}
+      /></a>
         : <h5>Cargando</h5>}
     </Box>
   )
