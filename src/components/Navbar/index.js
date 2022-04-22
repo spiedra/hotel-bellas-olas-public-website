@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+/* eslint-disable no-unused-vars */
+import React, { useMemo, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 
 import AppBar from '@mui/material/AppBar'
@@ -17,6 +18,7 @@ import CloseIcon from '@mui/icons-material/Close'
 
 import { navbarItems } from './consts/index'
 import { navbarStyles } from './styles'
+import Advertising from '../Advertising'
 
 const drawerWidth = 240
 
@@ -24,37 +26,46 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const navigate = useNavigate()
 
+  useEffect(() => {
+    console.log('Navbar render')
+  })
+
   const handleDrawerToggle = () => {
     setIsOpen(!isOpen)
   }
 
-  const drawer = (
-    <div>
-      <Toolbar sx={navbarStyles.toolbarClose}>
-        <IconButton
-          color="inherit"
-          aria-label="close drawer"
-          edge="end"
-          onClick={handleDrawerToggle}
-        >
-          <CloseIcon />
-        </IconButton>
-      </Toolbar>
-      <Divider />
-      <List>
-        {navbarItems.map((item) => (
-          <ListItem sx={{ pl: '2.5rem' }}
-            button
-            key={item.id}
-            onClick={() => {
-              navigate(item.route)
-            }}
+  const drawer = useMemo(
+    () => (
+      <Box>
+        <Toolbar sx={navbarStyles.toolbarClose}>
+          <IconButton
+            color="inherit"
+            aria-label="close drawer"
+            edge="end"
+            onClick={handleDrawerToggle}
           >
-            <ListItemText sx={navbarStyles.text} primary={item.label} />
-          </ListItem>
-        ))}
-      </List>
-    </div>
+            <CloseIcon />
+          </IconButton>
+        </Toolbar>
+        <Divider />
+        <List>
+          {navbarItems.map((item) => (
+            <ListItem
+              sx={{ pl: '2.5rem' }}
+              button
+              key={item.id}
+              onClick={() => {
+                navigate(item.route)
+              }}
+            >
+              <ListItemText sx={navbarStyles.text} primary={item.label} />
+            </ListItem>
+          ))}
+        </List>
+        {<Advertising />}
+      </Box>
+    ),
+    []
   )
 
   return (
