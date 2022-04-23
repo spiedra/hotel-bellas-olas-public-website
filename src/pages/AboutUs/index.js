@@ -21,23 +21,28 @@ const AboutUs = () => {
   return (
     <>
       <h1>Sobre nosotros</h1>
-      <p>{aboutUsInfo ? aboutUsInfo.aboutUsText : 'texto sobre nosotros texto sobre nosotros texto sobre nosotros texto sobre nosotros texto sobre nosotros texto sobre nosotros'}</p>
+      <p>
+        {aboutUsInfo
+          ? aboutUsInfo.aboutUsText
+          : 'texto sobre nosotros texto sobre nosotros texto sobre nosotros texto sobre nosotros texto sobre nosotros texto sobre nosotros'}
+      </p>
       {aboutUsInfo
         ? (
-          <Gallery>
-            <DisplayImg src={imgDisplay}></DisplayImg>
-            <ImageContainer>
-            {
-              aboutUsInfo.imgList.map((img, index) => (
-                    <GalleryPicture key={index} onClick={() => onDisplayImage(img)} src={img}/>
-              )
-              )
-            }
-            </ImageContainer>
-          </Gallery>
+        <Gallery>
+          <DisplayImg src={imgDisplay}></DisplayImg>
+          <ImageContainer>
+            {aboutUsInfo.imgList.map((img, index) => (
+              <GalleryPicture
+                key={index}
+                onClick={() => onDisplayImage(img)}
+                src={img}
+              />
+            ))}
+          </ImageContainer>
+        </Gallery>
           )
         : (
-        <LoaderSpinner/>
+        <LoaderSpinner />
           )}
     </>
   )

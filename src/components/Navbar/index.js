@@ -18,6 +18,8 @@ import CloseIcon from '@mui/icons-material/Close'
 
 import { navbarItems } from './consts/index'
 import { navbarStyles } from './styles'
+import Logo from '../../assets/wave.png'
+
 import Advertising from '../Advertising'
 
 const drawerWidth = 240
@@ -65,7 +67,7 @@ const Navbar = () => {
         {<Advertising />}
       </Box>
     ),
-    []
+    [isOpen]
   )
 
   return (
@@ -81,6 +83,14 @@ const Navbar = () => {
           >
             <MenuIcon />
           </IconButton>
+          <Box component="span" sx={{ mr: '.5rem' }}>
+            <img
+              src={Logo}
+              width="64"
+              height="64"
+              alt="Hotel bellas olas logo"
+            />
+          </Box>
           <Typography variant="h6" noWrap component="div">
             Hotel Bellas Olas
           </Typography>

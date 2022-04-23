@@ -28,8 +28,8 @@ export const ImageContainer = styled.div(props => ({
 }))
 
 export const DisplayImg = styled.img(props => ({
-  width: '400px',
-  height: '400px',
-  objectFit: 'center',
+  maxWidth: '100%',
+  height: 'auto',
+  objectFit: 'cover',
   border: '1px solid black'
 }))
