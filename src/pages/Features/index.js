@@ -1,7 +1,35 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import { GetHotelFeatures } from '../../services/Gets/getFeatures'
+import { FeatureConstainer, FeatureItem, FeatureImage, FeatureDescription } from './styles'
 const Features = () => {
-  return <h1>This is the Features</h1>
+  const [features, setFeatures] = useState()
+  useEffect(() => {
+    GetHotelFeatures().then((response) => {
+      setFeatures(response)
+      console.log(response)
+      console.log(features)
+    })
+  }, [])
+  return (
+  <>
+    <h1>Facilidades</h1>
+    <FeatureConstainer>
+      {
+        features
+          ? <>
+          {features.map((feat, index) => (
+             <FeatureItem key={index}>
+             <FeatureImage src={feat.img}/>
+             <FeatureDescription>{feat.feature.trim()}</FeatureDescription>
+              </FeatureItem>
+          ))}
+          </>
+          : <></>
+      }
+
+    </FeatureConstainer>
+  </>
+  )
 }
 
 export default Features
