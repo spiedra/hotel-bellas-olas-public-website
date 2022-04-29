@@ -6,8 +6,6 @@ const Features = () => {
   useEffect(() => {
     GetHotelFeatures().then((response) => {
       setFeatures(response)
-      console.log(response)
-      console.log(features)
     })
   }, [])
   return (

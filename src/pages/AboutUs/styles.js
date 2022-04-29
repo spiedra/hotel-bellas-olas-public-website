@@ -3,33 +3,37 @@ import styled from '@emotion/styled'
 export const Gallery = styled.div`
   display: grid;
   width: 90%;
-  margin: auto;
-  gap: 10px;
-  grid-template-columns: repeat(2,40%);
-  grid-template-Rows: 2;
+  display:flex;
   @media (max-width: 768px) {
-    grid-template-columns: repeat(1,1fr);
+    flex-direction:column;
   }
   `
 
+export const AboutUsText = styled.p`
+@media (max-width: 768px) {
+  font-size: 15px;
+  max-width: 70vw;
+}
+  `
+
 export const GalleryPicture = styled.img(props => ({
-  display: 'relative',
-  width: '100%',
+  width: '200px',
   height: '150px',
   objectFit: 'cover',
+  margin: '10px',
   ':hover': { cursor: 'pointer' }
 }))
 
 export const ImageContainer = styled.div(props => ({
-  display: 'grid',
-  gridTemplateColumns: 'repeat(4,100px)',
-  gap: '10px',
-  margin: '0'
+  display: 'flex',
+  flexWrap: 'wrap',
+  marginLeft: '10px'
 }))
 
 export const DisplayImg = styled.img(props => ({
-  maxWidth: '100%',
-  height: 'auto',
+  maxWidth: '80%',
+  width: '50%',
+  height: '400px',
   objectFit: 'cover',
   border: '1px solid black'
 }))

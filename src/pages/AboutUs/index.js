@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Gallery, GalleryPicture, DisplayImg, ImageContainer } from './styles'
+import { Gallery, GalleryPicture, DisplayImg, ImageContainer, AboutUsText } from './styles'
 import { getAboutUsInfo } from '../../services/Gets/getAboutUsInfo'
 import { LoaderSpinner } from '../../components/Loader'
 
@@ -21,11 +21,11 @@ const AboutUs = () => {
   return (
     <>
       <h1>Sobre nosotros</h1>
-      <p>
+      <AboutUsText>
         {aboutUsInfo
           ? aboutUsInfo.aboutUsText
           : 'texto sobre nosotros texto sobre nosotros texto sobre nosotros texto sobre nosotros texto sobre nosotros texto sobre nosotros'}
-      </p>
+      </AboutUsText>
       {aboutUsInfo
         ? (
         <Gallery>

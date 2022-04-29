@@ -7,8 +7,6 @@ const Rates = () => {
   useEffect(() => {
     GetRoomRates().then((response) => {
       setRates(response)
-      console.log(response)
-      console.log(rates)
     })
   }, [])
   return (
@@ -20,12 +18,12 @@ const Rates = () => {
           ? <>
           {rates.map((rate, index) => (
              <RateItem key={index}>
-             <RateImage src={rate.img}/>
-             <RateDescription>
-             <h2>Habitación {rate.category}</h2>
-              {rate.description.trim()}
-             <RateCost>Precio regular: ₡{rate.cost}</RateCost>
-             </RateDescription>
+                <RateImage src={rate.img}/>
+                <RateDescription>
+                <h2>Habitación {rate.category}</h2>
+                  {rate.description.trim()}
+                <RateCost>Precio regular: ₡{rate.cost}</RateCost>
+                </RateDescription>
               </RateItem>
           ))}
           </>
