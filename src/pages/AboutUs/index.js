@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Gallery, GalleryPicture, DisplayImg, ImageContainer, AboutUsText } from './styles'
+import {
+  Gallery,
+  GalleryPicture,
+  DisplayImg,
+  ImageContainer,
+  AboutUsText
+} from './styles'
 import { getAboutUsInfo } from '../../services/Gets/getAboutUsInfo'
 import { LoaderSpinner } from '../../components/Loader'
 
