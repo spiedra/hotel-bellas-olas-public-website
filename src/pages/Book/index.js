@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { useNavigate } from 'react-router'
+
 import { Controller, useForm } from 'react-hook-form'
 
 import { Box, Grid, MenuItem, Button, TextField } from '@mui/material'
@@ -18,8 +20,10 @@ const Book = () => {
     }
   })
 
+  const navigate = useNavigate()
+
   const onSubmit = (values) => {
-    console.log(values)
+    navigate(`/book/checkout/${values.tipoHabitacion}`)
   }
 
   return (
@@ -91,8 +95,8 @@ const Book = () => {
                   error={!!errors.tipoHabitacion}
                   label="Tipo de Habitación"
                 >
-                  <MenuItem value="1">Estandar</MenuItem>
-                  <MenuItem value="2">Junior</MenuItem>
+                  <MenuItem value="suite">Suite</MenuItem>
+                  <MenuItem value="junior">Junior</MenuItem>
                 </TextField>
               )}
             />

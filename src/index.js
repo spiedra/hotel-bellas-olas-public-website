@@ -15,6 +15,7 @@ import Home from './pages/Home'
 import Location from './pages/Location'
 import NotFound from './pages/NotFound'
 import Rates from './pages/Rates'
+import RoomAvailability from './pages/Book/RoomAvailability'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -30,6 +31,7 @@ root.render(
             <Route path="location" element={<Location />} />
             <Route path="rates" element={<Rates />} />
             <Route path="book" element={<Book />} />
+            <Route path="book/checkout/:roomType" element={<RoomAvailability />} />
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Route>
