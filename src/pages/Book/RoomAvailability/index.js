@@ -10,6 +10,8 @@ import { Button } from '@mui/material'
 
 import CustomModal from '../../../components/CustomModal'
 
+import { Label } from './styles'
+
 const RoomAvailability = () => {
   const [userInfo, setUserInfo] = useState({
     name: 'default',
@@ -45,8 +47,20 @@ const RoomAvailability = () => {
       {room
         ? (
         <Box>
-          <h1>{room.category}</h1>
-          <Box>{room.description.trim()}</Box>
+
+          <h1>Reservar en Línea</h1>
+          <h3>Habitación disponible</h3>
+
+          <Box
+            sx={{
+              marginLeft: '300px',
+              marginRight: '50px',
+              textAlign: 'justify'
+            }}
+          >
+            {room.description.trim()}
+
+          </Box>
           <Box
             component="img"
             sx={{
@@ -61,11 +75,11 @@ const RoomAvailability = () => {
             'Cargando'
           )}
 
-      <form noValidate onSubmit={handleSubmit(onSubmit)}>
+      <form className='formStyle' noValidate onSubmit={handleSubmit(onSubmit)}>
         <label> Monto de su reservación: $XYZ </label>
         <br></br>
-        <label>Nombre: </label>
-        <input {...register('name', { required: !!errors })} type="text" />
+        <Label>Nombre: </Label>
+        <input className='name' {...register('name', { required: !!errors })} type="text" />
         {errors
           ? (
               errors.name && (
@@ -78,7 +92,7 @@ const RoomAvailability = () => {
           <></>
             )}
         <br></br>
-        <label>Apellidos: </label>
+        <Label>Apellidos: </Label>
         <input {...register('lastname', { required: !!errors })} type="text" />
         {errors
           ? (
@@ -93,7 +107,7 @@ const RoomAvailability = () => {
             )}
         <br></br>
 
-        <label>Email: </label>
+        <Label>Email: </Label>
         <input {...register('email', { required: !!errors })} type="email" />
         {errors
           ? (
@@ -130,7 +144,7 @@ const RoomAvailability = () => {
           color="primary"
           type="submit"
           sx={{
-            marginTop: '50px',
+            marginTop: '20px',
             marginRight: '50px'
           }}
         >
@@ -140,7 +154,7 @@ const RoomAvailability = () => {
           variant="contained"
           color="primary"
           sx={{
-            marginTop: '50px',
+            marginTop: '20px',
             marginLeft: '50px'
           }}
         >
@@ -153,15 +167,12 @@ const RoomAvailability = () => {
           toggleOpenModal: () => setIsOpenModalConfirm(!isOpenModalConfirm)
         }}
       >
-        <h1>Reservar en Línea</h1>
-        <h3>Reservación finalizada!</h3>
-        <h3>
+        <h1>Reservación finalizada!</h1>
+        <p>
           Gracias {userInfo.name}!! Su reservación fue realizada exitosamente
-        </h3>
-        <h3>
           Acabamos de enviar esta información a la dirección {userInfo.email}{' '}
           para mayor facilidad
-        </h3>
+        </p>
       </CustomModal>
     </>
   )
