@@ -1,17 +1,6 @@
+import styled from '@emotion/styled'
 
-export const learningStyles = {
-  instructionsContainer: {
-    px: '2rem',
-    pt: '1rem'
-  },
-  paragraph: {
-    textAlign: 'justify'
-  },
-
-  button: {
-    padding: '10',
-    marginTop: '1.5rem',
-    margin: '10px',
-    marginBottom: '2rem'
-  
-}
+export const Label = styled.label((props) => ({
+  display: 'inline-block',
+  width: '80px'
+}))
