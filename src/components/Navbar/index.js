@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useMemo, useEffect, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router'
 
 import AppBar from '@mui/material/AppBar'
@@ -27,10 +26,6 @@ const drawerWidth = 240
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const navigate = useNavigate()
-
-  useEffect(() => {
-    console.log('Navbar render')
-  })
 
   const handleDrawerToggle = () => {
     setIsOpen(!isOpen)

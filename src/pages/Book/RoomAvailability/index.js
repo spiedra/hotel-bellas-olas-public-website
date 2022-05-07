@@ -11,7 +11,6 @@ import { Button } from '@mui/material'
 import CustomModal from '../../../components/CustomModal'
 
 import { Label } from './styles'
-
 const RoomAvailability = () => {
   const [userInfo, setUserInfo] = useState({
     name: 'default',
@@ -47,7 +46,6 @@ const RoomAvailability = () => {
       {room
         ? (
         <Box>
-
           <h1>Reservar en Línea</h1>
           <h3>Habitación disponible</h3>
 
@@ -106,7 +104,6 @@ const RoomAvailability = () => {
           <></>
             )}
         <br></br>
-
         <Label>Email: </Label>
         <input {...register('email', { required: !!errors })} type="email" />
         {errors
