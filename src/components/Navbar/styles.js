@@ -22,7 +22,8 @@ export const navbarStyles = {
   },
   nav: {
     width: { md: drawerWidth },
-    flexShrink: { sm: 0 }
+    flexShrink: { sm: 0 },
+    height: '100vh'
   },
   iconButton: {
     mr: 2,

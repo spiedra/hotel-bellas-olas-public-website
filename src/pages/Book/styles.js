@@ -1,10 +1,6 @@
 import { theme } from '../../styles/theme'
 
 export const learningStyles = {
-  instructionsContainer: {
-    px: '2rem',
-    pt: '1rem'
-  },
   paragraph: {
     textAlign: 'justify'
   },

@@ -37,7 +37,7 @@ const Features = () => {
                 <CardActionArea>
                   <CardMedia
                     component="img"
-                    height="140"
+                    height="165"
                     image={item.img}
                     alt={`Imagen de ${item.name}`}
                   />

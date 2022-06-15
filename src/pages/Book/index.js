@@ -42,11 +42,10 @@ const Book = () => {
 
   return (
     <>
-    <Box sx={learningStyles.instructionsContainer}>
+    <Box sx={{ mt: '3rem', ml: '1.5rem' }}>
       <h1>Reservar en Linea</h1>
       <Box
         component="form"
-        my="3rem"
         sx={{
           width: { xs: '100%', md: '70%' },
           '& .MuiTextField-root': {
