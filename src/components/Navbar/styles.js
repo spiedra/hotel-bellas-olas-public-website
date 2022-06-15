@@ -1,6 +1,6 @@
 import { theme } from '../../styles/theme'
 
-const drawerWidth = 240
+const drawerWidth = 275
 
 export const navbarStyles = {
   icons: {

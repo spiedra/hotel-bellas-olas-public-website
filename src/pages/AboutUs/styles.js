@@ -27,7 +27,8 @@ export const GalleryPicture = styled.img((props) => ({
 export const ImageContainer = styled.div((props) => ({
   display: 'flex',
   flexWrap: 'wrap',
-  marginLeft: '1rem'
+  marginLeft: '1rem',
+  marginTop: '.8rem'
 }))
 
 export const DisplayImg = styled.img((props) => ({
@@ -35,5 +36,6 @@ export const DisplayImg = styled.img((props) => ({
   width: '50%',
   height: '400px',
   objectFit: 'cover',
-  border: '1px solid black'
+  border: '1px solid black',
+  marginTop: '.8rem'
 }))

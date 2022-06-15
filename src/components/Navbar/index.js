@@ -21,7 +21,7 @@ import Logo from '../../assets/wave.png'
 
 import Advertising from '../Advertising'
 
-const drawerWidth = 240
+const drawerWidth = 275
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
