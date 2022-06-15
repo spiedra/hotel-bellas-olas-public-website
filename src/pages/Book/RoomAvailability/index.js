@@ -3,16 +3,22 @@ import { Box } from '@mui/system'
 import React, { useState, useEffect } from 'react'
 
 import { useParams } from 'react-router-dom'
-import { GetRoomRates } from '../../../services/Gets/getRoomRate'
 
 import { Controller, useForm } from 'react-hook-form'
 
 import { Button, Grid, MenuItem, TextField } from '@mui/material'
 
-import CustomModal from '../../../components/CustomModal'
+import DialogActions from '@mui/material/DialogActions'
+import DialogContent from '@mui/material/DialogContent'
+import DialogContentText from '@mui/material/DialogContentText'
+import DialogTitle from '@mui/material/DialogTitle'
+import Dialog from '@mui/material/Dialog'
 
-import { roomAvailabilityStyles } from './styles'
+import { roomAvailabilityStyles, Label } from './styles'
 import { LoaderSpinner } from '../../../components/Loader'
+
+import { createReservation } from '../../../services/Posts/createReservation'
+import { GetRoomRates } from '../../../services/Gets/getRoomRate'
 const RoomAvailability = () => {
   const [isOpenModalConfirm, setIsOpenModalConfirm] = useState(false)
   const { roomType } = useParams()
@@ -21,7 +27,9 @@ const RoomAvailability = () => {
     name: 'default',
     lastname: 'default',
     email: 'default@gmail.com',
-    creditCard: '232543'
+    creditCard: '232543',
+    creditCardDate: '444',
+    creditCardCVV: '221'
   })
 
   const {
@@ -36,11 +44,43 @@ const RoomAvailability = () => {
     }
   })
 
+  // const {
+  //   register,
+  //   formState: { errors },
+  //   handleSubmit
+  // } = useForm()
+  // const onSubmit = (e) => {
+  //   const info = {
+  //     Name: e.name,
+  //     Lastname: e.lastname,
+  //     Email: e.email,
+  //     CreditCardNumber: e.creditCard,
+  //     CreditCardDate: e.creditCardDate,
+  //     CreditCardCVV: e.creditCardCVV,
+  //     RoomType: reservationInfo[2],
+  //     ArrivalDate: reservationInfo[0],
+  //     DepartureDate: reservationInfo[1]
+  //   }
+  //   createReservation(info).then(response => {
+  //     setModalInfo({ msg: response, isOpen: true })
+  //   })
+  // }
+
+  const [modalInfo, setModalInfo] = useState({ isOpen: false, msg: '' })
+
+  const params = useParams()
+  const [reservationInfo, setReservationInfo] = useState(['', '', '', '', ''])
+  // const [room, setRoom] = useState()
+
   useEffect(() => {
+    setReservationInfo(params.roomType.split('+'))
     GetRoomRates().then((response) => {
       setRoom(
         response.find((item) => {
-          return item.category.toLowerCase() === roomType
+          return (
+            item.category.toLowerCase() ===
+            params.roomType.split('+')[2].toLowerCase()
+          )
         })
       )
     })
@@ -59,7 +99,13 @@ const RoomAvailability = () => {
           <h1>Reservar en Línea</h1>
           <h3>Habitación disponible</h3>
 
-          <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: { xs: 'wrap', md: 'nowrap' } }}>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              flexWrap: { xs: 'wrap', md: 'nowrap' }
+            }}
+          >
             <Box
               component="img"
               sx={{
@@ -87,7 +133,7 @@ const RoomAvailability = () => {
         <LoaderSpinner />
           )}
 
-<Box
+      <Box
         component="form"
         my="3rem"
         sx={{
@@ -163,9 +209,25 @@ const RoomAvailability = () => {
                 <TextField
                   sx={roomAvailabilityStyles.select}
                   {...field}
-                  type="text"
+                  type="number"
                   error={!!errors.creditCard}
                   label="Tarjeta de crédito:"
+                ></TextField>
+              )}
+            />
+          </Grid>
+          <Grid item>
+            <Controller
+              control={control}
+              name="expirationDate"
+              rules={{ required: true }}
+              render={({ field: { ...field } }) => (
+                <TextField
+                  sx={roomAvailabilityStyles.select}
+                  {...field}
+                  type="text"
+                  error={!!errors.expirationDate}
+                  label="Fecha de vencimiento"
                 ></TextField>
               )}
             />
@@ -179,7 +241,7 @@ const RoomAvailability = () => {
                 <TextField
                   sx={roomAvailabilityStyles.select}
                   {...field}
-                  type="text"
+                  type="number"
                   error={!!errors.creditCard}
                   label="CVV"
                 ></TextField>
@@ -280,7 +342,40 @@ const RoomAvailability = () => {
           <></>
             )}
         <br></br>
-
+        <label>Fecha vencimiento: </label>
+        <input
+          {...register('creditCardDate', { required: !!errors })}
+          type="text"
+        />
+        {errors
+          ? (
+              errors.creditCard && (
+            <p style={{ color: 'red', fontSize: '15px' }}>
+              {'*ingrese la fecha de la tarjeta'}
+            </p>
+              )
+            )
+          : (
+          <></>
+            )}
+             <br></br>
+            <label>CVV: </label>
+        <input
+          {...register('creditCardCVV', { required: !!errors })}
+          type="number"
+        />
+        {errors
+          ? (
+              errors.creditCard && (
+            <p style={{ color: 'red', fontSize: '15px' }}>
+              {'*ingrese el cvv'}
+            </p>
+              )
+            )
+          : (
+          <></>
+            )}
+             <br></br>
         <Button
           variant="contained"
           color="primary"
@@ -303,7 +398,7 @@ const RoomAvailability = () => {
           Cancelar
         </Button>
       </form> */}
-      <CustomModal
+      {/* <CustomModal
         props={{ title: '', isOpen: isOpenModalConfirm }}
         methods={{
           toggleOpenModal: () => setIsOpenModalConfirm(!isOpenModalConfirm)
@@ -315,7 +410,7 @@ const RoomAvailability = () => {
           Acabamos de enviar esta información a la dirección {userInfo.email}{' '}
           para mayor facilidad
         </p>
-      </CustomModal>
+      </CustomModal> */}
     </Box>
   )
 }

@@ -1,4 +1,5 @@
-import React from 'react'
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react'
 
 import { useNavigate } from 'react-router'
 
@@ -6,6 +7,13 @@ import { Controller, useForm } from 'react-hook-form'
 
 import { Box, Grid, MenuItem, Button, TextField } from '@mui/material'
 import { learningStyles } from './styles'
+import { getReservationAvailability } from '../../services/Posts/getReservationAvailability'
+
+import DialogActions from '@mui/material/DialogActions'
+import DialogContent from '@mui/material/DialogContent'
+import DialogContentText from '@mui/material/DialogContentText'
+import DialogTitle from '@mui/material/DialogTitle'
+import Dialog from '@mui/material/Dialog'
 
 const Book = () => {
   const {
@@ -19,11 +27,17 @@ const Book = () => {
       end: ''
     }
   })
-
+  const [modalInfo, setModalInfo] = useState({ isOpen: false, msg: '' })
   const navigate = useNavigate()
 
   const onSubmit = (values) => {
-    navigate(`/book/checkout/${values.tipoHabitacion}`)
+    getReservationAvailability({ ArrivalDate: values.start, DepartureDate: values.end, RoomType: values.tipoHabitacion }).then(response => {
+      if (Number.isInteger(response)) {
+        navigate(`/book/checkout/${values.start + '+' + values.end + '+' + values.tipoHabitacion + '+' + response}`)
+      } else {
+        setModalInfo({ msg: response, isOpen: true })
+      }
+    })
   }
 
   return (
@@ -95,8 +109,8 @@ const Book = () => {
                   error={!!errors.tipoHabitacion}
                   label="Tipo de Habitación"
                 >
-                  <MenuItem value="suite">Suite</MenuItem>
-                  <MenuItem value="junior">Junior</MenuItem>
+                  <MenuItem value="Suite">Suite</MenuItem>
+                  <MenuItem value="Junior">Junior</MenuItem>
                 </TextField>
               )}
             />
@@ -112,6 +126,27 @@ const Book = () => {
           Aceptar
         </Button>
       </Box>
+      <Dialog
+          open={modalInfo.isOpen}
+          onClose={() => setModalInfo({ isOpen: false })}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">Ha ocurrido un error</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              {modalInfo.msg}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              onClick={() => setModalInfo({ isOpen: false })}
+              color="primary"
+            >
+              Okay
+            </Button>
+          </DialogActions>
+        </Dialog>
     </Box>
   )
 }
