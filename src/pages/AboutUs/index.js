@@ -33,6 +33,7 @@ const AboutUs = () => {
           ? aboutUsInfo.aboutUsText
           : 'texto sobre nosotros texto sobre nosotros texto sobre nosotros texto sobre nosotros texto sobre nosotros texto sobre nosotros'}
       </AboutUsText>
+      <h2>Galeria</h2>
       {aboutUsInfo
         ? (
         <Gallery>

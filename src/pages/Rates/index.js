@@ -47,7 +47,7 @@ const Rates = () => {
                     <Typography
                       variant="body2"
                       color="text.secondary"
-                      sx={{ lineHeight: '28px', fontSize: '15px' }}
+                      sx={{ lineHeight: '28px', fontSize: '16px' }}
                     >
                       {item.description.trim()}
                     </Typography>

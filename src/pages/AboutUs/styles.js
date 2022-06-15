@@ -4,6 +4,7 @@ export const Gallery = styled.div`
   display: grid;
   width: 90%;
   display: flex;
+
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -13,6 +14,7 @@ export const AboutUsText = styled.p`
   line-height: 28px;
   font-size: 17px;
   width: 90%;
+  text-align: justify;
 `
 
 export const GalleryPicture = styled.img((props) => ({
@@ -27,8 +29,7 @@ export const GalleryPicture = styled.img((props) => ({
 export const ImageContainer = styled.div((props) => ({
   display: 'flex',
   flexWrap: 'wrap',
-  marginLeft: '1rem',
-  marginTop: '.8rem'
+  marginLeft: '1rem'
 }))
 
 export const DisplayImg = styled.img((props) => ({
@@ -36,6 +37,5 @@ export const DisplayImg = styled.img((props) => ({
   width: '50%',
   height: '400px',
   objectFit: 'cover',
-  border: '1px solid black',
-  marginTop: '.8rem'
+  border: '1px solid black'
 }))
