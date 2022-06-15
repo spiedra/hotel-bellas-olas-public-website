@@ -1,8 +1,13 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 
-import { Box } from '@mui/material'
+import { Box, Paper, Button } from '@mui/material'
 import { getAdvertisingInfo } from '../../services/Gets/getAdvertisingInfo'
 import { LoaderSpinner } from '../Loader'
+import Carousel from 'react-material-ui-carousel'
+
+import Logo from '../../assets/logo.png'
+import wave from '../../assets/wave.png'
 
 const Advertising = () => {
   const [advertisingInfo, setAdvertisingInfo] = useState()
@@ -28,16 +33,11 @@ const Advertising = () => {
       {advertisingInfo
         ? (
         <>
-          <a href={advertisingInfo.adLink} target="_blank" rel="noreferrer">
-            <Box
-              component="img"
-              sx={{
-                maxWidth: { xs: 175, md: 220 }
-              }}
-              alt={advertisingInfo.alt}
-              src={`data:image/png;base64,${advertisingInfo.image}`}
-            />
-          </a>
+          <Carousel>
+            {advertisingInfo.map((item, i) => (
+              <Item key={i} {...item} />
+            ))}
+          </Carousel>
         </>
           )
         : (
@@ -52,6 +52,23 @@ const Advertising = () => {
         </Box>
           )}
     </Box>
+  )
+}
+
+const Item = ({ adInfo, adLink, imageBase64 }) => {
+  return (
+    <Paper sx={{ boxShadow: 'none' }}>
+      <a href={adLink} target="_blank" rel="noreferrer">
+        <Box
+          component="img"
+          sx={{
+            maxWidth: { xs: 175, md: 220 }
+          }}
+          alt={adInfo}
+          src={`data:image/png;base64,${imageBase64}`}
+        />
+      </a>
+    </Paper>
   )
 }
 
