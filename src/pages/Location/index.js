@@ -14,16 +14,9 @@ const Location = () => {
 
   return (
     <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignContent: 'center',
-        flexDirection: 'column'
-      }}
+      sx={{ mt: '3rem', ml: '1.5rem' }}
     >
-      <Box sx={{ mt: '.8rem', textAlign: 'start', width: '100%' }}>
-        <h1>Ubicación</h1>
-      </Box>
+      <h1>Ubicación</h1>
       <Box>
         <Box component="p">{hotelLocation.address}</Box>
         <Box sx={{ pr: 2, width: { xs: '100%', md: '75%' } }}>

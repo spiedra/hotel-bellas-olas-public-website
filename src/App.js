@@ -1,27 +1,31 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 
 import Box from '@mui/material/Box'
 import Navbar from './components/Navbar'
-
-const drawerWidth = 240
+import Footer from './components/Footer'
 
 function App () {
   return (
-    <Box sx={{ display: 'flex', height: '100vh' }}>
-      <Navbar />
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          paddingTop: 6,
-          paddingLeft: 2,
-          width: { sm: `calc(100% - ${drawerWidth}px)` }
-        }}
-      >
-        <Outlet />
+    <>
+      <Box sx={{ display: 'flex' }}>
+        <Navbar />
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            py: 6,
+            height: '100%',
+            paddingLeft: 2,
+            paddingRight: 2
+          }}
+        >
+          <Outlet />
+        </Box>
       </Box>
-    </Box>
+      <Footer />
+    </>
   )
 }
 

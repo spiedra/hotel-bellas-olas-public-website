@@ -17,11 +17,11 @@ import CloseIcon from '@mui/icons-material/Close'
 
 import { navbarItems } from './consts/index'
 import { navbarStyles } from './styles'
-import Logo from '../../assets/wave.png'
+import Logo from '../../assets/logo.png'
 
 import Advertising from '../Advertising'
 
-const drawerWidth = 240
+const drawerWidth = 275
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -67,18 +67,18 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar sx={navbarStyles.appBar}>
+      <AppBar position="fixed" sx={{ width: '100%' }}>
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={navbarStyles.iconButton}
+            sx={{ mr: 2, display: { md: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
-          <Box component="span" sx={{ mr: '.5rem' }}>
+          <Box component="span" sx={{ mr: '.3rem', mt: '.2rem' }}>
             <img
               src={Logo}
               width="64"
@@ -91,7 +91,11 @@ const Navbar = () => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Box component="nav" sx={navbarStyles.nav}>
+      <Box component="nav" sx={{
+        width: { md: drawerWidth },
+        flexShrink: { sm: 0 },
+        height: '100vh'
+      }}>
         <Drawer
           variant="temporary"
           open={isOpen}

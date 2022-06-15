@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 
 import { useNavigate } from 'react-router'
@@ -9,13 +8,14 @@ import { Box, Grid, MenuItem, Button, TextField } from '@mui/material'
 import { learningStyles } from './styles'
 import { getReservationAvailability } from '../../services/Posts/getReservationAvailability'
 
-import DialogActions from '@mui/material/DialogActions'
-import DialogContent from '@mui/material/DialogContent'
-import DialogContentText from '@mui/material/DialogContentText'
-import DialogTitle from '@mui/material/DialogTitle'
-import Dialog from '@mui/material/Dialog'
+import ModalResponse from '../../components/ModalResponse'
+import useModal from '../../hooks/useModal'
 
 const Book = () => {
+  const [result, setResult] = useState()
+  const [isOpen, { setOpen, setClose }] = useModal(false)
+  const navigate = useNavigate()
+
   const {
     control,
     handleSubmit,
@@ -27,25 +27,24 @@ const Book = () => {
       end: ''
     }
   })
-  const [modalInfo, setModalInfo] = useState({ isOpen: false, msg: '' })
-  const navigate = useNavigate()
 
   const onSubmit = (values) => {
     getReservationAvailability({ ArrivalDate: values.start, DepartureDate: values.end, RoomType: values.tipoHabitacion }).then(response => {
       if (Number.isInteger(response)) {
         navigate(`/book/checkout/${values.start + '+' + values.end + '+' + values.tipoHabitacion + '+' + response}`)
       } else {
-        setModalInfo({ msg: response, isOpen: true })
+        setResult(response)
+        setOpen()
       }
     })
   }
 
   return (
-    <Box sx={learningStyles.instructionsContainer}>
+    <>
+    <Box sx={{ mt: '3rem', ml: '1.5rem' }}>
       <h1>Reservar en Linea</h1>
       <Box
         component="form"
-        my="3rem"
         sx={{
           width: { xs: '100%', md: '70%' },
           '& .MuiTextField-root': {
@@ -126,28 +125,16 @@ const Book = () => {
           Aceptar
         </Button>
       </Box>
-      <Dialog
-          open={modalInfo.isOpen}
-          onClose={() => setModalInfo({ isOpen: false })}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">Ha ocurrido un error</DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              {modalInfo.msg}
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button
-              onClick={() => setModalInfo({ isOpen: false })}
-              color="primary"
-            >
-              Okay
-            </Button>
-          </DialogActions>
-        </Dialog>
     </Box>
+
+    <ModalResponse
+        open={isOpen}
+        handleOpen={setOpen}
+        handleClose={setClose}
+        title="Mensaje"
+        description={result}
+      />
+    </>
   )
 }
 

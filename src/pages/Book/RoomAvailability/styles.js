@@ -1,6 +1,36 @@
-import styled from '@emotion/styled'
+import { theme } from '../../../styles/theme'
 
-export const Label = styled.label((props) => ({
-  display: 'inline-block',
-  width: '80px'
-}))
+export const roomAvailabilityStyles = {
+  instructionsContainer: {
+    px: '2rem',
+    pt: '1rem'
+  },
+  paragraph: {
+    textAlign: 'justify'
+  },
+  select: {
+    '& label.Mui-focused': {
+      color: theme.palette.primary.main
+    },
+    '& .MuiInputLabel-root': {
+      color: 'black'
+    },
+    '& .MuiFormHelperText-root': {
+      color: 'black'
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: theme.palette.primary.main
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'black'
+      },
+      '&:hover fieldset': {
+        borderColor: theme.palette.primary.main
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: theme.palette.primary.main
+      }
+    }
+  }
+}
