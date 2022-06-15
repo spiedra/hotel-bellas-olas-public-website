@@ -10,24 +10,24 @@ export const Gallery = styled.div`
 `
 
 export const AboutUsText = styled.p`
-  @media (max-width: 768px) {
-    font-size: 15px;
-    max-width: 70vw;
-  }
+  line-height: 28px;
+  font-size: 17px;
+  width: 90%;
 `
 
 export const GalleryPicture = styled.img((props) => ({
   width: '200px',
   height: '150px',
   objectFit: 'cover',
-  margin: '10px',
+  marginBottom: '15px',
+  marginRight: '15px',
   ':hover': { cursor: 'pointer' }
 }))
 
 export const ImageContainer = styled.div((props) => ({
   display: 'flex',
   flexWrap: 'wrap',
-  marginLeft: '10px'
+  marginLeft: '1rem'
 }))
 
 export const DisplayImg = styled.img((props) => ({

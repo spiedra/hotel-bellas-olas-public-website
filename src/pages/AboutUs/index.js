@@ -8,6 +8,7 @@ import {
 } from './styles'
 import { getAboutUsInfo } from '../../services/Gets/getAboutUsInfo'
 import { LoaderSpinner } from '../../components/Loader'
+import { Box } from '@mui/material'
 
 const AboutUs = () => {
   const [aboutUsInfo, setAboutUsInfo] = useState()
@@ -25,7 +26,7 @@ const AboutUs = () => {
   }
 
   return (
-    <>
+    <Box sx={{ mt: '3rem', ml: '1.5rem' }}>
       <h1>Sobre nosotros</h1>
       <AboutUsText>
         {aboutUsInfo
@@ -50,7 +51,7 @@ const AboutUs = () => {
         : (
         <LoaderSpinner />
           )}
-    </>
+    </Box>
   )
 }
 

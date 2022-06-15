@@ -2,11 +2,13 @@ import styled from '@emotion/styled'
 
 export const Div = styled.div((props) => ({
   display: 'flex',
-  flex: '1',
-  marginTop: '40px'
+  flexDirection: 'column',
+  marginTop: '3rem',
+  marginLeft: '1.5rem'
 }))
 
 export const Img = styled.img((props) => ({
-  height: '400px',
-  width: '400px'
+  height: '300px',
+  width: '500px',
+  marginTop: '.5rem'
 }))
