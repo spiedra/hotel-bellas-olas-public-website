@@ -6,6 +6,7 @@ import {
   ImageContainer,
   AboutUsText
 } from './styles'
+
 import { getAboutUsInfo } from '../../services/Gets/getAboutUsInfo'
 import { LoaderSpinner } from '../../components/Loader'
 import { Box } from '@mui/material'
@@ -26,33 +27,33 @@ const AboutUs = () => {
   }
 
   return (
-    <Box sx={{ mt: '3rem', ml: '1.5rem' }}>
-      <h1>Sobre nosotros</h1>
-      <AboutUsText>
-        {aboutUsInfo
-          ? aboutUsInfo.aboutUsText
-          : 'texto sobre nosotros texto sobre nosotros texto sobre nosotros texto sobre nosotros texto sobre nosotros texto sobre nosotros'}
-      </AboutUsText>
-      <h2>Galeria</h2>
+    <>
+      <Box component="h1" sx={{ fontSize: { xs: '1.5rem', md: '2rem' } }}>
+        Sobre nosotros
+      </Box>
       {aboutUsInfo
         ? (
-        <Gallery>
-          <DisplayImg src={imgDisplay}></DisplayImg>
-          <ImageContainer>
-            {aboutUsInfo.imgList.map((img, index) => (
-              <GalleryPicture
-                key={index}
-                onClick={() => onDisplayImage(img)}
-                src={img}
-              />
-            ))}
-          </ImageContainer>
-        </Gallery>
+        <>
+          <AboutUsText>{aboutUsInfo.aboutUsText}</AboutUsText>
+          <h2>Galeria</h2>
+          <Gallery>
+            <DisplayImg src={imgDisplay.img}></DisplayImg>
+            <ImageContainer>
+              {aboutUsInfo.imgList.map((item, index) => (
+                <GalleryPicture
+                  key={index}
+                  onClick={() => onDisplayImage(item)}
+                  src={item.img}
+                />
+              ))}
+            </ImageContainer>
+          </Gallery>
+        </>
           )
         : (
         <LoaderSpinner />
           )}
-    </Box>
+    </>
   )
 }
 

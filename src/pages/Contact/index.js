@@ -3,7 +3,7 @@ import React from 'react'
 
 const Contact = () => {
   return (
-    <Box sx={{ mt: '3rem', ml: '1.5rem' }}>
+    <Box>
       <h1>Contáctenos</h1>
       <Box sx={{ ml: '.5rem' }}>
         <h3>Hotel Bellas Olas</h3>

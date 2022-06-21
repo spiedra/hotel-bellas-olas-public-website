@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Div, Img } from './styles'
+import { Img } from './styles'
 import { getHomeInfo } from '../../services/Gets/getHomeInfo'
 import { Box } from '@mui/material'
 import { LoaderSpinner } from '../../components/Loader'
@@ -16,31 +16,29 @@ const Home = () => {
 
   return (
     <>
-      <Div>
-        <Box>
-          <Box component="h1" sx={{ mt: 0 }}>
-            Bienvenido a Hotel Bellas Olas{' '}
-          </Box>
-          <Box
-            component="p"
-            sx={{ lineHeight: '28px', fontSize: '17px', width: '90%' }}
-          >
-            {homeInfo
-              ? homeInfo.homeText
-              : 'Nuestra vista al mar le dará el descanso que usted merece. Rodeado de naturaleza y aguas cristalinas, Bellas Olas es el mejor lugar para desconectarse de la rutina y reconectar con la paz.'}
-          </Box>
+      <Box>
+        <Box component="h1" sx={{ fontSize: { xs: '1.5rem', md: '2rem' } }}>
+          Bienvenido al Hotel Bellas Olas
         </Box>
         {homeInfo
           ? (
-          <Img
-            src={homeInfo.img ? homeInfo.img : ''}
-            alt={homeInfo.alt ? homeInfo.alt : 'Hotel Bellas Olas Img'}
-          />
+          <>
+            <Box
+              component="p"
+              sx={{ lineHeight: '28px', fontSize: '17px', width: '90%' }}
+            >
+              {homeInfo.homeText}
+            </Box>
+            <Img
+              src={homeInfo.img ? homeInfo.img : ''}
+              alt={homeInfo.alt ? homeInfo.alt : 'Hotel Bellas Olas Img'}
+            />
+          </>
             )
           : (
-            <LoaderSpinner />
+          <LoaderSpinner />
             )}
-      </Div>
+      </Box>
     </>
   )
 }

@@ -9,11 +9,9 @@ import { learningStyles } from './styles'
 import { getReservationAvailability } from '../../services/Posts/getReservationAvailability'
 
 import ModalResponse from '../../components/ModalResponse'
-import useModal from '../../hooks/useModal'
 
 const Book = () => {
-  const [result, setResult] = useState()
-  const [isOpen, { setOpen, setClose }] = useModal(false)
+  const [stateModal, setStateModal] = useState({ msg: '', isOpen: false })
   const navigate = useNavigate()
 
   const {
@@ -33,15 +31,14 @@ const Book = () => {
       if (Number.isInteger(response)) {
         navigate(`/book/checkout/${values.start + '+' + values.end + '+' + values.tipoHabitacion + '+' + response}`)
       } else {
-        setResult(response)
-        setOpen()
+        setStateModal({ msg: response, isOpen: true })
       }
     })
   }
 
   return (
     <>
-    <Box sx={{ mt: '3rem', ml: '1.5rem' }}>
+    <Box>
       <h1>Reservar en Linea</h1>
       <Box
         component="form"
@@ -128,11 +125,11 @@ const Book = () => {
     </Box>
 
     <ModalResponse
-        open={isOpen}
-        handleOpen={setOpen}
-        handleClose={setClose}
-        title="Mensaje"
-        description={result}
+        isOpen={stateModal.isOpen}
+        onClose={() => setStateModal({ isOpen: false })}
+        onSubmit={() => setStateModal({ isOpen: false })}
+        title={'Mensaje del sistema'}
+        content={stateModal.msg}
       />
     </>
   )

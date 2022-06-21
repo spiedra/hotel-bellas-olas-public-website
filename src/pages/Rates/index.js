@@ -19,20 +19,20 @@ const Rates = () => {
     })
   }, [])
   return (
-    <Box sx={{ mt: '3rem', ml: '1.5rem' }}>
+    <>
       <h1>Tarifas</h1>
       <Box
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
-          gap: '40px'
+          gap: '44px'
         }}
       >
         {rates
           ? (
           <>
             {rates.map((item, index) => (
-              <Card key={index} sx={{ maxWidth: 345 }}>
+              <Card key={index} sx={{ maxWidth: 345, minWidth: 345 }}>
                 <CardActionArea>
                   <CardMedia
                     component="img"
@@ -72,7 +72,7 @@ const Rates = () => {
           <LoaderSpinner />
             )}
       </Box>
-    </Box>
+    </>
   )
 }
 

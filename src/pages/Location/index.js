@@ -13,9 +13,7 @@ const Location = () => {
   }, [])
 
   return (
-    <Box
-      sx={{ mt: '3rem', ml: '1.5rem' }}
-    >
+    <>
       <h1>Ubicación</h1>
       <Box>
         <Box component="p">{hotelLocation.address}</Box>
@@ -31,7 +29,7 @@ const Location = () => {
           ></iframe>
         </Box>
       </Box>
-    </Box>
+    </>
   )
 }
 

@@ -12,7 +12,7 @@ const ConfirmationMessage = ({ name, email }) => {
 
   return (
     <>
-      <Box sx={{ mt: '3rem', ml: '1.5rem' }}>
+      <Box>
         <h1>Reservar en Línea</h1>
         <p>¡Reservación realizada!</p>
         <p>

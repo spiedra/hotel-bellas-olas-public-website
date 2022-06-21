@@ -1,10 +1,13 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
+
 import { Outlet } from 'react-router-dom'
 
 import Box from '@mui/material/Box'
+
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+
+const drawerWidth = 300
 
 function App () {
   return (
@@ -15,10 +18,11 @@ function App () {
           component="main"
           sx={{
             flexGrow: 1,
-            py: 6,
+            pt: 10,
+            pb: 5,
+            px: 6,
             height: '100%',
-            paddingLeft: 2,
-            paddingRight: 2
+            width: { sm: `calc(100% - ${drawerWidth}px)` }
           }}
         >
           <Outlet />
