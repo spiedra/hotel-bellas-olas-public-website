@@ -10,6 +10,7 @@ const Advertising = () => {
 
   useEffect(() => {
     getAdvertisingInfo().then((response) => {
+      console.log(response)
       setAdvertisingInfo(response)
     })
   }, [])
