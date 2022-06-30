@@ -60,7 +60,7 @@ const RoomAvailability = () => {
       CreditCardDate: values.expirationDate,
       CreditCardCVV: values.creditCardCVV,
       RoomType: reservationInfo[2],
-      ArrivalDate: reservationInfo[0],
+      EntryDate: reservationInfo[0],
       DepartureDate: reservationInfo[1]
     }).then((response) => {
       setResult(response)

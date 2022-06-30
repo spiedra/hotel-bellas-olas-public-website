@@ -14,6 +14,7 @@ const Advertising = () => {
 
   useEffect(() => {
     getAdvertisingInfo().then((response) => {
+      console.log(response)
       setAdvertisingInfo(response)
     })
   }, [])
@@ -55,7 +56,7 @@ const Advertising = () => {
   )
 }
 
-const Item = ({ adInfo, adLink, imageBase64 }) => {
+const Item = ({ info, adLink, img }) => {
   return (
     <Paper sx={{ boxShadow: 'none' }}>
       <a href={adLink} target="_blank" rel="noreferrer">
@@ -64,8 +65,8 @@ const Item = ({ adInfo, adLink, imageBase64 }) => {
           sx={{
             maxWidth: { xs: 175, md: 220 }
           }}
-          alt={adInfo}
-          src={`data:image/png;base64,${imageBase64}`}
+          alt={info}
+          src={img}
         />
       </a>
     </Paper>

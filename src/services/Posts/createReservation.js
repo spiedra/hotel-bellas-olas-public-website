@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://localhost:7233/API/Room/CreateReservation'
+const baseURL = 'https://localhost:7233/API/Reservation/CreateReservation'
 
 export const createReservation = (props) => {
   return axios

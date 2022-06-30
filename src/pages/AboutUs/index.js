@@ -17,7 +17,7 @@ const AboutUs = () => {
   useEffect(() => {
     getAboutUsInfo().then((response) => {
       setAboutUsInfo(response)
-      setImgDisplay(response ? response.imgList[0] : '')
+      setImgDisplay(response ? response.imgList[0].img : '')
     })
   }, [])
 
@@ -42,8 +42,8 @@ const AboutUs = () => {
             {aboutUsInfo.imgList.map((img, index) => (
               <GalleryPicture
                 key={index}
-                onClick={() => onDisplayImage(img)}
-                src={img}
+                onClick={() => onDisplayImage(img.img)}
+                src={img.img}
               />
             ))}
           </ImageContainer>
