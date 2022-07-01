@@ -13,11 +13,13 @@ import { GetRoomRates } from '../../services/Gets/getRoomRate'
 
 const Rates = () => {
   const [rates, setRates] = useState()
+
   useEffect(() => {
     GetRoomRates().then((response) => {
       setRates(response)
     })
   }, [])
+
   return (
     <>
       <h1>Tarifas</h1>
