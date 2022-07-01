@@ -17,7 +17,7 @@ const Footer = () => {
       }}
     >
       <Box component="span" sx={{ fontSize: '13px', mr: '2rem' }}>
-      Copyright©Hotel Bellas Olas 2022
+        Copyright©Hotel Bellas Olas 2022
       </Box>
     </Box>
   )

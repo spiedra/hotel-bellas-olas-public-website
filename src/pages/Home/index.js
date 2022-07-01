@@ -9,7 +9,6 @@ const Home = () => {
 
   useEffect(() => {
     getHomeInfo().then((response) => {
-      console.log(response)
       setHomeInfo(response)
     })
   }, [])

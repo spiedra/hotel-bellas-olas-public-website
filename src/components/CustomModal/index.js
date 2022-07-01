@@ -22,7 +22,6 @@ export default function CustomModal ({ props, children, methods }) {
             ? createElement(child.type, {
               ...{
                 ...child.props,
-                // register: methods.register,
                 key: child.props.name
               }
             })
