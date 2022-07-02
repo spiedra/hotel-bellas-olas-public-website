@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 
 import { useParams } from 'react-router-dom'
@@ -16,15 +15,6 @@ import { LoaderSpinner } from '../../../components/Loader'
 import { roomAvailabilityStyles } from './styles'
 import ConfirmationMessage from '../ConfirmationMessage'
 
-const defaultValues = {
-  name: '',
-  lastName: '',
-  email: '',
-  creditCard: '',
-  expirationDate: '',
-  creditCardCVV: ''
-}
-
 const RoomAvailability = () => {
   const { roomType } = useParams()
   const [room, setRoom] = useState()
@@ -36,7 +26,16 @@ const RoomAvailability = () => {
     handleSubmit,
     formState: { errors },
     reset
-  } = useForm(defaultValues)
+  } = useForm({
+    defaultValues: {
+      name: '',
+      lastName: '',
+      email: '',
+      creditCard: '',
+      expirationDate: '',
+      creditCardCVV: ''
+    }
+  })
 
   useEffect(() => {
     setReservationInfo(roomType.split('+'))
@@ -68,7 +67,16 @@ const RoomAvailability = () => {
   }
 
   const handleCancel = () => {
-    reset(defaultValues)
+    reset({
+      defaultValues: {
+        name: '',
+        lastName: '',
+        email: '',
+        creditCard: '',
+        expirationDate: '',
+        creditCardCVV: ''
+      }
+    })
   }
 
   return (
@@ -76,7 +84,6 @@ const RoomAvailability = () => {
       {!result
         ? (
         <>
-
           <Box>
             <h1>Reservar en Línea</h1>
             {room
