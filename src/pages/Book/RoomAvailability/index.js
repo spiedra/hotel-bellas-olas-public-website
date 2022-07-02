@@ -51,6 +51,7 @@ const RoomAvailability = () => {
   }, [])
 
   const onSubmit = (values) => {
+    setRoom()
     createReservation({
       Name: values.name,
       Lastname: values.lastName,

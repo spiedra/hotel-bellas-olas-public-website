@@ -11,7 +11,8 @@ import { getReservationAvailability } from '../../services/Posts/getReservationA
 import ModalResponse from '../../components/ModalResponse'
 
 const Book = () => {
-  const [stateModal, setStateModal] = useState({ msg: '', isOpen: false })
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [modalMessage, setModalMessage] = useState()
   const navigate = useNavigate()
 
   const {
@@ -45,7 +46,8 @@ const Book = () => {
           }`
         )
       } else {
-        setStateModal({ msg: response, isOpen: true })
+        setModalMessage(response)
+        setIsModalOpen(true)
       }
     })
   }
@@ -139,11 +141,11 @@ const Book = () => {
       </Box>
 
       <ModalResponse
-        isOpen={stateModal.isOpen}
-        onClose={() => setStateModal({ isOpen: false })}
-        onSubmit={() => setStateModal({ isOpen: false })}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSubmit={() => setIsModalOpen(false)}
         title={'Mensaje del sistema'}
-        content={stateModal.msg}
+        content={modalMessage}
       />
     </>
   )
