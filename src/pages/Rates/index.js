@@ -64,6 +64,19 @@ const Rates = () => {
                     >
                       Precio regular: ₡{item.cost}
                     </Typography>
+                    {parseInt(item.cost) !== parseInt(item.currentCost) && (
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          lineHeight: '28px',
+                          fontSize: '15px',
+                          mt: '1rem',
+                          fontWeight: 'bold'
+                        }}
+                      >
+                        Precio actual: ₡{item.currentCost}
+                      </Typography>
+                    )}
                   </CardContent>
                 </CardActionArea>
               </Card>
