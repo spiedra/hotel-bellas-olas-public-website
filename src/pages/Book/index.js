@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 
 import { useNavigate } from 'react-router'
@@ -33,7 +34,7 @@ const Book = () => {
       DepartureDate: values.end,
       RoomType: values.tipoHabitacion
     }).then((response) => {
-      if (Number.isInteger(response)) {
+      if (Object.keys(response).length > 0) {
         navigate(
           `/book/checkout/${
             values.start +
@@ -42,7 +43,9 @@ const Book = () => {
             '+' +
             values.tipoHabitacion +
             '+' +
-            response
+            response.cost +
+            '+' +
+            response.currentCost
           }`
         )
       } else {

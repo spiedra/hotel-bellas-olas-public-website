@@ -40,6 +40,7 @@ const RoomAvailability = () => {
   useEffect(() => {
     setReservationInfo(roomType.split('+'))
     GetRoomRates().then((response) => {
+      console.log(response)
       setRoom(
         response.find((item) => {
           return (
@@ -91,7 +92,7 @@ const RoomAvailability = () => {
               ? (
               <>
                 <Box>
-                  <h3>Habitación disponible</h3>
+                  <h3>Habitación disponible: {room.category}</h3>
                   <Box
                     sx={{
                       display: 'flex',
@@ -125,6 +126,11 @@ const RoomAvailability = () => {
                 <Box component="h3">
                   Monto de reservación: ₡{reservationInfo[3]}
                 </Box>
+                {parseInt(reservationInfo[4]) !== parseInt(reservationInfo[3]) && (
+                  <Box component="h3">
+                    Monto de reservación con el descuento actual: ₡{reservationInfo[4]}
+                  </Box>
+                )}
                 <Box
                   component="form"
                   mb="3rem"
