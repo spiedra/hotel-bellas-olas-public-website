@@ -34,7 +34,7 @@ const Book = () => {
       DepartureDate: values.end,
       RoomType: values.tipoHabitacion
     }).then((response) => {
-      if (Object.keys(response).length > 0) {
+      if (!response.message) {
         navigate(
           `/book/checkout/${
             values.start +
@@ -49,7 +49,7 @@ const Book = () => {
           }`
         )
       } else {
-        setModalMessage(response)
+        setModalMessage(response.message)
         setIsModalOpen(true)
       }
     })

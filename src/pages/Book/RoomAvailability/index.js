@@ -40,7 +40,6 @@ const RoomAvailability = () => {
   useEffect(() => {
     setReservationInfo(roomType.split('+'))
     GetRoomRates().then((response) => {
-      console.log(response)
       setRoom(
         response.find((item) => {
           return (
@@ -92,7 +91,7 @@ const RoomAvailability = () => {
               ? (
               <>
                 <Box>
-                  <h3>Habitación disponible: {room.category}</h3>
+                  <h3>Tipo de habitación seleccionada: {room.category}</h3>
                   <Box
                     sx={{
                       display: 'flex',
