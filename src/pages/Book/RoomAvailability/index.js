@@ -26,16 +26,7 @@ const RoomAvailability = () => {
     handleSubmit,
     formState: { errors },
     reset
-  } = useForm({
-    defaultValues: {
-      name: '',
-      lastName: '',
-      email: '',
-      creditCard: '',
-      expirationDate: '',
-      creditCardCVV: ''
-    }
-  })
+  } = useForm()
 
   useEffect(() => {
     setReservationInfo(roomType.split('+'))
@@ -51,6 +42,12 @@ const RoomAvailability = () => {
   }, [])
 
   const onSubmit = (values) => {
+    if (localStorage.getItem('cookiesAllowed') === 'true') {
+      localStorage.setItem('name', values.name)
+      localStorage.setItem('lastName', values.lastName)
+      localStorage.setItem('email', values.email)
+    }
+
     setRoom()
     createReservation({
       Name: values.name,
@@ -154,11 +151,13 @@ const RoomAvailability = () => {
                         control={control}
                         name="name"
                         rules={{ required: true }}
+                        defaultValue={localStorage.getItem('name') ? localStorage.getItem('name') : ''}
                         render={({ field: { ...field } }) => (
                           <TextField
                             sx={roomAvailabilityStyles.select}
                             {...field}
                             type="text"
+                            fullWidth
                             error={!!errors.name}
                             label="Nombre"
                           ></TextField>
@@ -170,6 +169,7 @@ const RoomAvailability = () => {
                         control={control}
                         name="lastName"
                         rules={{ required: true }}
+                        defaultValue={localStorage.getItem('lastName') ? localStorage.getItem('lastName') : ''}
                         render={({ field: { ...field } }) => (
                           <TextField
                             sx={roomAvailabilityStyles.select}
@@ -186,6 +186,7 @@ const RoomAvailability = () => {
                         control={control}
                         name="email"
                         rules={{ required: true }}
+                        defaultValue={localStorage.getItem('email') ? localStorage.getItem('email') : ''}
                         render={({ field: { ...field } }) => (
                           <TextField
                             sx={roomAvailabilityStyles.select}
@@ -202,6 +203,7 @@ const RoomAvailability = () => {
                         control={control}
                         name="creditCard"
                         rules={{ required: true }}
+                        defaultValue={''}
                         render={({ field: { ...field } }) => (
                           <TextField
                             sx={roomAvailabilityStyles.select}
@@ -218,6 +220,7 @@ const RoomAvailability = () => {
                         control={control}
                         name="expirationDate"
                         rules={{ required: true }}
+                        defaultValue={''}
                         render={({ field: { ...field } }) => (
                           <TextField
                             sx={roomAvailabilityStyles.select}
@@ -234,6 +237,7 @@ const RoomAvailability = () => {
                         control={control}
                         name="creditCardCVV"
                         rules={{ required: true }}
+                        defaultValue={''}
                         render={({ field: { ...field } }) => (
                           <TextField
                             sx={roomAvailabilityStyles.select}

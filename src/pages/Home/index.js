@@ -3,15 +3,30 @@ import { Img } from './styles'
 import { getHomeInfo } from '../../services/Gets/getHomeInfo'
 import { Box } from '@mui/material'
 import { LoaderSpinner } from '../../components/Loader'
+import ModalResponse from '../../components/ModalResponse'
 
 const Home = () => {
   const [homeInfo, setHomeInfo] = useState()
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     getHomeInfo().then((response) => {
       setHomeInfo(response)
     })
+    if (!localStorage.getItem('cookiesAllowed')) {
+      setIsModalOpen(true)
+    }
   }, [])
+
+  const onAcceptCookies = () => {
+    localStorage.setItem('cookiesAllowed', 'true')
+    setIsModalOpen(false)
+  }
+
+  const onDeclineCookies = () => {
+    localStorage.setItem('cookiesAllowed', 'false')
+    setIsModalOpen(false)
+  }
 
   return (
     <>
@@ -38,6 +53,13 @@ const Home = () => {
           <LoaderSpinner />
             )}
       </Box>
+      <ModalResponse
+        isOpen={isModalOpen}
+        onClose={onDeclineCookies}
+        onSubmit={onAcceptCookies}
+        title={'Mensaje del sistema'}
+        content={'Utilizamos cookies para optimizar nuestro sitio web y nuestro servicio'}
+      />
     </>
   )
 }
