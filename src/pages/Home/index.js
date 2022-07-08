@@ -58,7 +58,7 @@ const Home = () => {
         onClose={onDeclineCookies}
         onSubmit={onAcceptCookies}
         title={'Mensaje del sistema'}
-        content={'Utilizamos cookies para optimizar nuestro sitio web y nuestro servicio'}
+        content={'Utilizamos cookies para optimizar nuestro sitio web y nuestro servicio, ¿Está de acuerdo?'}
       />
     </>
   )
